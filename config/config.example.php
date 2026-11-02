@@ -1,15 +1,12 @@
 <?php
 
-//IEDER VOOR ZICH:
+// Copy this file to config.php and replace the example values with your own.
+$base_url = 'http://storingapp2.test';
 
-#### TODO
-//Hernoem dit bestand naar 'config.php' en vul jouw eigen database-gegevens in.
-//Deze config wordt hierna _niet_ meegestuurd naar je groepsgenoten. Zo kan iedereen zijn eigen wachtwoord, etc. invullen.
-
-$dbHost = 'localhost';
-$dbName = 'storingapp';
-$dbUser = 'root';
-$dbPass = '';
-
-//De url waarop jouw project staat. Géén slash aan het einde.
-$base_url = 'http://localhost/storingapp';
+return [
+    'host' => '127.0.0.1',
+    'port' => 3306,
+    'database' => 'storingapp',
+    'username' => 'your_database_username',
+    'password' => 'your_database_password',
+];

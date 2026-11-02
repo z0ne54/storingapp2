@@ -1,8 +1,18 @@
 <?php
 
-//Haal de configuratie op
-require_once 'config.php';
 
-//Met behulp van PDO zetten we de connectie op, waarna we met setAttribute de manier van errormeldingen weergeven bepalen.
-$conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$config = require __DIR__ . '/config.php';
+
+if (!is_array($config)) {
+    throw new UnexpectedValueException('config.php must return a database configuration array.');
+}
+
+$conn = new PDO(
+    "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8mb4",
+    $config['username'],
+    $config['password'],
+    [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]
+);
